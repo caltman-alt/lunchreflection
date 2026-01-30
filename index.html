@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunch Reflection Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .form-content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .question {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            margin-top: 10px;
+        }
+
+        .checkbox-item,
+        .radio-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .checkbox-item label,
+        .radio-item label {
+            font-weight: normal;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        .scale-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .scale-label {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .scale-options {
+            display: flex;
+            gap: 15px;
+        }
+
+        .scale-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .scale-option input[type="radio"] {
+            margin: 0 0 5px 0;
+        }
+
+        .scale-option span {
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .submit-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0);
+        }
+
+        .helper-text {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Lunch Reflection Form</h1>
+            <p>This is a space for you to pause and think. We care about you and your success, which is why we aren't letting this behavior slide. Use this time to reflect honestly so we can get back on track together.</p>
+        </div>
+
+        <div class="form-content">
+            <div id="successMessage" class="success-message">
+                Thank you for completing your reflection. Your response has been submitted.
+            </div>
+
+            <form id="reflectionForm">
+                <!-- Basic Information -->
+                <div class="section">
+                    <div class="question">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="question">
+                        <label for="date">What is today's date? <span class="required">*</span></label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+
+                    <div class="question">
+                        <label for="name">What is your first and last name? <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="question">
+                        <label>Which classroom expectation was not met? <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="respect-others" name="expectation" value="Respect for others">
+                                <label for="respect-others">Respect for others (Kind words, listening)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="respect-learning" name="expectation" value="Respect for learning">
+                                <label for="respect-learning">Respect for learning (Staying on task, following directions)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="respect-self" name="expectation" value="Respect for self">
+                                <label for="respect-self">Respect for self (Giving my best effort)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="safety" name="expectation" value="Safety">
+                                <label for="safety">Safety (Physical safety or classroom order)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other-expectation" name="expectation" value="other">
+                                <label for="other-expectation">Other:</label>
+                            </div>
+                            <input type="text" id="other-expectation-text" name="other-expectation-text" placeholder="Please specify" style="margin-left: 30px; margin-top: 5px;">
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label for="what-happened">In your own words, what happened? <span class="required">*</span></label>
+                        <textarea id="what-happened" name="what-happened" required></textarea>
+                    </div>
+                </div>
+
+                <!-- The Ripple Effect -->
+                <div class="section">
+                    <h2 class="section-title">The Ripple Effect</h2>
+
+                    <div class="question">
+                        <label>Who was affected by my choice? <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="affected-self" name="affected" value="Myself">
+                                <label for="affected-self">Myself (I lost learning time)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="affected-teacher" name="affected" value="My teacher">
+                                <label for="affected-teacher">My teacher (They had to stop teaching)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="affected-classmates" name="affected" value="My classmates">
+                                <label for="affected-classmates">My classmates (Their focus was interrupted)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="affected-family" name="affected" value="My family">
+                                <label for="affected-family">My family (They expect me to do my best)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other-affected" name="affected" value="other">
+                                <label for="other-affected">Other:</label>
+                            </div>
+                            <input type="text" id="other-affected-text" name="other-affected-text" placeholder="Please specify" style="margin-left: 30px; margin-top: 5px;">
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label for="how-felt">How do you think they felt when this happened? <span class="required">*</span></label>
+                        <textarea id="how-felt" name="how-felt" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Restorative Action -->
+                <div class="section">
+                    <h2 class="section-title">Restorative Action</h2>
+                    <p style="margin-bottom: 20px; color: #666;">Harmful actions are repairable. In this section you will decide how to repair the harm caused by your actions.</p>
+
+                    <div class="question">
+                        <label>What can I do to make this right? <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="action-apology" name="action" value="Write a genuine apology">
+                                <label for="action-apology">Write a genuine apology to the person I impacted.</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="action-fix" name="action" value="Fix/Clean something">
+                                <label for="action-fix">Fix/Clean something I damaged or disorganized.</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="action-complete" name="action" value="Complete the learning task">
+                                <label for="action-complete">Complete the learning task I missed during class.</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="action-plan" name="action" value="Create a plan with teacher">
+                                <label for="action-plan">Create a plan with my teacher to avoid this next time.</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other-action" name="action" value="other">
+                                <label for="other-action">Other:</label>
+                            </div>
+                            <input type="text" id="other-action-text" name="other-action-text" placeholder="Please specify" style="margin-left: 30px; margin-top: 5px;">
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label for="immediate-plan">What is my plan to immediately restore the harm I caused? (What action am I going to take now?) <span class="required">*</span></label>
+                        <textarea id="immediate-plan" name="immediate-plan" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Moving Forward -->
+                <div class="section">
+                    <h2 class="section-title">Moving Forward</h2>
+
+                    <div class="question">
+                        <label for="need-from-teacher">What do I need from my teacher or the school to be successful next time? <span class="required">*</span></label>
+                        <textarea id="need-from-teacher" name="need-from-teacher" required></textarea>
+                    </div>
+
+                    <div class="question">
+                        <label>On a scale of 1-5, how ready are you to return to class and follow expectations? <span class="required">*</span></label>
+                        <div class="scale-container">
+                            <span class="scale-label">Not Ready</span>
+                            <div class="scale-options">
+                                <div class="scale-option">
+                                    <input type="radio" id="ready-1" name="readiness" value="1" required>
+                                    <span>1</span>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="ready-2" name="readiness" value="2">
+                                    <span>2</span>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="ready-3" name="readiness" value="3">
+                                    <span>3</span>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="ready-4" name="readiness" value="4">
+                                    <span>4</span>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="ready-5" name="readiness" value="5">
+                                    <span>5</span>
+                                </div>
+                            </div>
+                            <span class="scale-label">Completely Ready</span>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <label for="parent-email">Parent/Guardian Email (ask teacher if you don't know): <span class="required">*</span></label>
+                        <input type="email" id="parent-email" name="parent-email" required>
+                    </div>
+
+                    <div class="question">
+                        <label>Before you click submit: has your teacher reviewed your responses with you? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="reviewed-yes" name="reviewed" value="Yes" required>
+                                <label for="reviewed-yes">Yes! I'm good to submit.</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="reviewed-no" name="reviewed" value="No">
+                                <label for="reviewed-no">Not yet - I need to ask them before I submit</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <button type="submit">Submit Reflection</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Google Apps Script URL - connected to your Google Sheet
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzMyv6TYncom4jaMpvEY5d5GWiXVSL_W-cX9m9zX4hx1qGjpw8vpz4DfuHwgQkJMrWD/exec';
+
+        // Set today's date as default
+        document.getElementById('date').valueAsDate = new Date();
+
+        // Handle form submission
+        document.getElementById('reflectionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Disable submit button to prevent double submission
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            // Collect form data
+            const formData = new FormData(e.target);
+            const data = {};
+            
+            // Process regular fields
+            for (let [key, value] of formData.entries()) {
+                if (key === 'expectation' || key === 'affected' || key === 'action') {
+                    if (!data[key]) {
+                        data[key] = [];
+                    }
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Convert arrays to comma-separated strings for Google Sheets
+            if (data.expectation) data.expectation = data.expectation.join(', ');
+            if (data.affected) data.affected = data.affected.join(', ');
+            if (data.action) data.action = data.action.join(', ');
+            
+            // Add timestamp
+            data.timestamp = new Date().toLocaleString();
+            
+            // Send to Google Sheets
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Reset form
+                setTimeout(() => {
+                    e.target.reset();
+                    document.getElementById('date').valueAsDate = new Date();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 3000);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('There was an error submitting your reflection. Please try again or contact your teacher.');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+
+        // Enable/disable "Other" text fields based on checkbox
+        document.getElementById('other-expectation').addEventListener('change', function() {
+            document.getElementById('other-expectation-text').disabled = !this.checked;
+        });
+        
+        document.getElementById('other-affected').addEventListener('change', function() {
+            document.getElementById('other-affected-text').disabled = !this.checked;
+        });
+        
+        document.getElementById('other-action').addEventListener('change', function() {
+            document.getElementById('other-action-text').disabled = !this.checked;
+        });
+    </script>
+</body>
+</html>
