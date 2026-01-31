@@ -355,6 +355,7 @@ Copy
                             <option value="Valery Sar Lucas">Valery Sar Lucas</option>
                             <option value="Ximena Lopez-Garcia">Ximena Lopez-Garcia</option>
                             <option value="Xochitl Ventura">Xochitl Ventura</option>
+                            <option value="Test Student">Test Student</option>
                         </select>
                     </div>
 
@@ -535,15 +536,159 @@ Copy
     <script>
         // Google Apps Script URL - connected to your Google Sheet
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzMyv6TYncom4jaMpvEY5d5GWiXVSL_W-cX9m9zX4hx1qGjpw8vpz4DfuHwgQkJMrWD/exec';
+        
+        // Teacher passkey
+        const TEACHER_PASSKEY = 'Restorative2026';
+        
+        // Student name to parent email mapping
+        const STUDENT_EMAILS = {
+            "Aiden Mejia-Tejada": "elviaduran72@yahoo.com, emejianlis@yahoo.com",
+            "Alan Garcia": "clgpedroza@gmail.com, j.garciaelectrician@gmail.com",
+            "Alan Gonzalez Marquez": "elenaa.marquez06@gmail.com",
+            "Alan Rodriguez-Guzman": "gladisguzman235@gmail.com",
+            "Alfonso Viveros Salinas": "salinasami@gmail.com",
+            "Allison Sacayon": "karinairis2251@gmail.com, n071062b@gmail.com",
+            "Anamari Figueroa-Espinoza": "espinozacecilia37@gmail.com, albertico52gonzalez@gmail.com",
+            "Andrea Lopez-Juarez": "",
+            "Angel Sequen": "ruthsequen2015@gmail.com",
+            "Angelina Lopez": "angilopez599@gmail.com",
+            "Annabelle Martinez-Acevedo": "martinezacevedo4@gmail.com",
+            "Anthony Castellanos": "arriagaenancy@yahoo.com, ervinestuardo2009@gmail.com",
+            "Ariel Perez Palazuelos": "ana.diaz8310@gmail.com",
+            "Ashley Vergara": "ashmando2026@gmail.com",
+            "Ashlyn Lucas-Ordonez": "milsifabiola@gmail.com",
+            "Avigail Rodriguez": "estelaramos19802018@gmail.com",
+            "Axel Montano": "elmontano73@gmail.com, carmenmatias12@gmail.com",
+            "Belky Lopez": "lopeznorma648@gmail.com",
+            "Bryan Pastor-Margos": "elvira.margo24@gmail.com",
+            "Camila Sandoval": "loyda424@hotmail.com",
+            "Celeste Trejo": "arlethtrejo1@gmail.com",
+            "Christabelle Cruz De Leon": "deboradeleon230@gmail.com",
+            "Christian Lopez": "emelyjuliana499@gmail.com",
+            "Cresly Esteban": "",
+            "Damian Delgado": "diego_d323@outlook.com, cristy26g@gmail.com",
+            "Damian Garcia": "",
+            "Daniel Cisneros-Jimenez": "blancajimenez.6442@gmail.com, ulicessun45@gmail.com",
+            "Daniel Olvera": "kandi.julio@gmail.com",
+            "Daniela Peralta-Espinoza": "",
+            "Dante Sosa-Flores": "csosa7215@gmail.com, tavucle@gmail.com",
+            "Deisy Reyes-Martinez": "olymartinez2013@gmail.com",
+            "Desiree Nolasco Hernandez": "dechimoscoso@gmail.com, gatonolasco@gmail.com",
+            "Destiny Baten Hernandez": "brendah303@gmail.com",
+            "Diego Ruiz": "neliscalles19@gmail.com, alonsoruiz0412@gmail.com",
+            "Dominic Elias": "bdelgado1988@gmail.com",
+            "Dylan Argueta": "ladysica142@gmail.com",
+            "Dylan Castellon": "jjdouglas27@yahoo.com",
+            "Dylan Rivera Hernandez": "isishernadez0505@gmail.com",
+            "Elanee Soriano": "myra0203@yahoo.com, 2newambituins@gmail.com",
+            "Emily Osorio Hernandez": "vjaneth2014ey@gmail.com",
+            "Emily Tzul": "linarespatico7@gmail.com, tzulpedro@yahoo.com",
+            "Esdras Mejia Lopez": "almarimejia04@gmail.com",
+            "Esther Perez": "marthavasquez1013@gmail.com",
+            "Evelyn Lopez-Maldonado": "lidiamaldonado1987@gmail.com, felopez86@icloud.com",
+            "Ezekiel Villagran": "helenz.86@icloud.com, jvillagan@icloud.com",
+            "Geovanny Nolasco-Lopez": "geofer118@gmail.com",
+            "Hailey Quino-Lopez": "lopez.jasmine@yahoo.com",
+            "Hannah Xec-Tecum": "clementatecum@gmail.com",
+            "Hazel Serrano": "evelynmoran042@gmail.com, oserrano069@gmail.com",
+            "Ian Valle": "claudiavramirez10@gmail.com",
+            "Irving Jimenez": "",
+            "Ivett Gonzalez Guerra": "haydee123guerra@gmail.com",
+            "Izabella Ibarra": "elizabeth.campos720@gmail.com",
+            "Jacob Castellanos": "viridiana0104s@gmail.com",
+            "Jacob Orozco Garcia": "rosaz.0621@gmail.com",
+            "Jacob Rodriguez": "liz2083@yahoo.com",
+            "Jacob Sandoval": "gloelizabeth85@yahoo.com",
+            "Jacob Vasquez": "msebarajas@gmail.com",
+            "Jayden Alfaro Ramirez": "alejandra.colocha27@gmail.com, barberblendz1@gmail.com",
+            "Jaylenn Marin-Flores": "yflores1220@gmail.com, kjye1230@gmail.com",
+            "Jazlyn Velasco": "",
+            "Jeremias Espinoza": "marced17@yahoo.com",
+            "Joaquin Bernal": "",
+            "Jonathan Aguirre": "nancivasquez55@gmail.com",
+            "Jonathan Flores": "allendeevelia@gmail.com",
+            "Jonathan Luna-Tzunun": "uca.mario@gmail.com, uluna.rz@gmail.com",
+            "Justin Perez-Salvador": "sonia21309341@gmail.com",
+            "Karen Flores-Millan": "sofiamillan1984@gmail.com",
+            "Karina Moran Zavala": "IRENEZAVALA730@GMAIL.COM",
+            "Katherine Caselin-Mendoza": "helen_l.a@hotmail.com",
+            "Kathleen Bulux-Ixcot": "yolandysotodbulux@gmail.com",
+            "Kelly Hernandez-Vasquez": "fermin.hernandez01210@gmail.com",
+            "Kevin Valles-Pineda": "",
+            "Leilany Garcia": "garciadalia862@gmail.com",
+            "Logan Villalobos": "noranerio4@gmail.com",
+            "Luis Romero Cuellar": "joselyng2188@hotmail.com, chinchulin0220@gmail.com",
+            "Marcos Andrez Ramos": "emilianaandres79@gmail.com, emilianaandres81@gmail.com",
+            "Maximino Sanchez-Herrera": "herreraninfa481@gmail.com",
+            "Maya Sajnani": "jemelisae429@gmail.com, sajnanih@gmail.com",
+            "Mayelin Rocha-Mondragon": "blancamondragon23@yahoo.com",
+            "Merari Garcia": "",
+            "Michelle Chora-Esquivel": "dahoskm03@outlook.com",
+            "Michelle Ramirez": "oscarrm9@gmail.com, gramirez8411@gmail.com",
+            "Miriam Siebenhor": "sgarcia.sgm081799@gmail.com",
+            "Mussa Rem": "rembless21@gmail.com, remyuliy@gmail.com",
+            "Nathaly Alcocer-Saldana": "miriamalcocer1008@gmail.com",
+            "Nathan Garcia-Martinez": "kari181926@gmail.com",
+            "Nathan Majano": "",
+            "Nathan Mendez": "samiip27@gmail.com",
+            "Nicole Sandoval": "flacasical86@gmail.com",
+            "Noah Pena": "lita719@yahoo.com, ajorgepena@yahoo.com",
+            "Olivia Gomez": "kimberlypina1992@gmail.com",
+            "Raykai Atkins": "",
+            "Rebecca Gonzalez": "maria.ramirez.0913@gmail.com, gonzalezmichael1313@gmail.com",
+            "Richelle Espinal": "maryjosepbertrand@yahoo.com",
+            "Rodrigo Canseco-Hernandez": "hernandezgaby1684@gmail.com",
+            "Rosemaryjane Santana": "manelysantana@gmail.com",
+            "Ruben Flores": "rubenflores1208@gmail.com",
+            "Saira Solis-Pascual": "",
+            "Santiago Tapia Morales": "jeimymorales80@yahoo.com",
+            "Santiago Velasquez": "antonietasantiago87@gmail.com",
+            "Sara Romero Preciado": "",
+            "Sarai Vidal": "natalievidal123@gmail.com",
+            "Sergio Rojas Barcenas": "cresenciabarcenas73@gmail.com",
+            "Shesny Hernandez Garcia": "marisolgar00@gmail.com",
+            "Sol Mendoza": "mendozadonald61@gmail.com",
+            "Sophia Leiva": "wleiva365@outlook.com, quintania777@gmail.com",
+            "Stephanie Martinez Pena": "mirnapena29@icloud.com",
+            "Stephany Cruz-Guzman": "adela5guzman@gmail.com",
+            "Tiffany Ruvalcaba": "nadia.ruv710@gmail.com",
+            "Valery Sar Lucas": "valelucas92@gmail.com",
+            "Ximena Lopez-Garcia": "lopez31580@gmail.com",
+            "Xochitl Ventura": "elizabeth.agr1529@gmail.com",
+            "Test Student": "caltman@equitasacademy.org"
+        };
 
         // Set today's date as default
         document.getElementById('date').valueAsDate = new Date();
+        
+        // Auto-populate parent email when student name is selected
+        document.getElementById('name').addEventListener('change', function() {
+            const studentName = this.value;
+            const parentEmailField = document.getElementById('parent-email');
+            
+            if (studentName && STUDENT_EMAILS[studentName]) {
+                parentEmailField.value = STUDENT_EMAILS[studentName];
+            } else {
+                parentEmailField.value = '';
+            }
+        });
 
-        // Handle form submission
+        // Handle form submission with passkey
         document.getElementById('reflectionForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Disable submit button to prevent double submission
+            // Show passkey prompt
+            const passkey = prompt('Teacher Passkey Required:\n\nPlease enter the teacher passkey to submit this reflection:');
+            
+            // Check if passkey is correct
+            if (passkey !== TEACHER_PASSKEY) {
+                if (passkey !== null) { // User didn't click cancel
+                    alert('Incorrect passkey. Please ask your teacher for the correct passkey.');
+                }
+                return; // Don't submit the form
+            }
+            
+            // Passkey is correct, proceed with submission
             const submitBtn = e.target.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Submitting...';
