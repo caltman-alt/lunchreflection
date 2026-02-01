@@ -35,6 +35,27 @@
             position: relative;
         }
 
+        .staff-portal-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #8dc63f;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .staff-portal-btn:hover {
+            background: #7ab82f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
         .logo-container {
             margin-bottom: 20px;
         }
@@ -275,6 +296,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <a href="https://script.google.com/macros/s/AKfycby_TKLJlvgn6wgm1_KZxO3N4vyz0BiY9QnRV4M_-fA/dev" class="staff-portal-btn" target="_blank">Teacher Portal</a>
             <div class="logo-container">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="EQ2 Logo" class="logo" id="eq2-logo">
             </div>
