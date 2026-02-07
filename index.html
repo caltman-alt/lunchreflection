@@ -860,7 +860,14 @@
             
             // Add timestamp
             data.timestamp = new Date().toLocaleString();
-            
+
+            // DEBUG: Log what we're about to send
+console.log('=== ABOUT TO SEND TO GOOGLE ===');
+console.log('Grade value:', data.grade);
+console.log('All data:', JSON.stringify(data, null, 2));
+
+// Send to Google Sheets
+fetch(GOOGLE_SCRIPT_URL, {
             // Send to Google Sheets
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
