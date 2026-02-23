@@ -626,10 +626,10 @@
                 ✅ Thank you for completing your reflection. Your response has been submitted.
             </div>
 
-            <!-- Hidden field to track form type -->
-            <input type="hidden" id="form-type-hidden" name="form-type" value="">
-
             <form id="reflectionForm">
+
+                <!-- Hidden field to track form type — must be inside the form -->
+                <input type="hidden" id="form-type-hidden" name="form-type" value="">
 
                 <!-- Basic Information -->
                 <div class="section">
@@ -1580,7 +1580,6 @@
             }
 
             data['parent-email'] = document.getElementById('parent-email').value;
-            data['form-type'] = selectedFormType;
             data['reviewed'] = 'Yes';
 
             if (data.expectation) data.expectation = data.expectation.join(', ');
