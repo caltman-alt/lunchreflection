@@ -350,6 +350,210 @@
             font-size: 1.05em;
         }
 
+        /* Repair Categories */
+        .repair-category {
+            margin-bottom: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .repair-header {
+            cursor: pointer;
+            user-select: none;
+        }
+        .repair-header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px 10px 16px;
+        }
+        .repair-name {
+            font-weight: 700;
+            font-size: 1.05em;
+        }
+        .repair-toggle {
+            font-size: 0.8em;
+            color: #888;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+        .repair-toggle.open {
+            transform: rotate(180deg);
+        }
+        .repair-explanation {
+            padding: 0 16px 14px 16px;
+            font-size: 0.9em;
+            line-height: 1.55;
+            color: #444;
+        }
+        .repair-goal {
+            margin-top: 5px;
+            font-weight: 600;
+        }
+        .repair-examples {
+            margin-top: 3px;
+            font-style: italic;
+            color: #666;
+        }
+        .repair-body {
+            border-top: 2px solid #e0e0e0;
+            background: white;
+            padding: 16px 20px 20px 20px;
+            display: none;
+        }
+        .repair-body.open {
+            display: block;
+        }
+        .repair-body-question {
+            font-weight: 600;
+            color: #1e3a5f;
+            font-size: 0.97em;
+            margin-bottom: 14px;
+        }
+        .repair-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .repair-action {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 6px;
+            background: #f8f9fa;
+        }
+        .repair-action input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            margin-right: 0;
+        }
+        .repair-action-text {
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: #333;
+            font-weight: normal;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+        .action-bullets {
+            margin-top: 6px;
+            padding-left: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .action-bullet {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.4;
+        }
+        .action-bullet::before {
+            content: "•";
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .repair-category.relationship { border-color: #e63946; }
+        .repair-category.relationship .repair-header-top { background: #fff5f5; }
+        .repair-category.relationship .repair-name { color: #c0392b; }
+        .repair-category.relationship .repair-explanation { background: #fff5f5; }
+        .repair-category.relationship .repair-body { border-top-color: #e63946; }
+        .repair-category.relationship .repair-action input { accent-color: #c0392b; }
+        .repair-category.environment { border-color: #f9a825; }
+        .repair-category.environment .repair-header-top { background: #fff8e1; }
+        .repair-category.environment .repair-name { color: #b7770d; }
+        .repair-category.environment .repair-explanation { background: #fff8e1; }
+        .repair-category.environment .repair-body { border-top-color: #f9a825; }
+        .repair-category.environment .repair-action input { accent-color: #b7770d; }
+        .repair-category.self-repair { border-color: #8dc63f; }
+        .repair-category.self-repair .repair-header-top { background: #f4faeb; }
+        .repair-category.self-repair .repair-name { color: #5a8a1f; }
+        .repair-category.self-repair .repair-explanation { background: #f4faeb; }
+        .repair-category.self-repair .repair-body { border-top-color: #8dc63f; }
+        .repair-category.self-repair .repair-action input { accent-color: #5a8a1f; }
+
+        /* Passkey modal overlay */
+        .passkey-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .passkey-overlay.active {
+            display: flex;
+        }
+        .passkey-modal {
+            background: white;
+            border-radius: 10px;
+            padding: 35px 30px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .passkey-modal h3 {
+            color: #1e3a5f;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+        .passkey-modal p {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 18px;
+        }
+        .passkey-modal input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .passkey-modal input:focus {
+            outline: none;
+            border-color: #8dc63f;
+        }
+        .passkey-modal-error {
+            color: #e63946;
+            font-size: 0.88em;
+            margin-bottom: 10px;
+            display: none;
+        }
+        .passkey-modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .passkey-modal-submit {
+            flex: 1;
+            padding: 12px;
+            background: #e63946;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .passkey-modal-submit:hover { background: #d62839; }
+        .passkey-modal-cancel {
+            padding: 12px 18px;
+            background: #f0f0f0;
+            color: #555;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .passkey-modal-cancel:hover { background: #e0e0e0; }
+
         /* Mobile responsive */
         @media (max-width: 600px) {
             body {
@@ -529,53 +733,152 @@
 
                 <!-- ===== RESTORATIVE ACTION (both forms) ===== -->
                 <div class="section">
-                    <h2 class="section-title">Restorative Action</h2>
+                    <h2 class="section-title">Restorative Action (Immediate Action)</h2>
                     <div class="restorative-note">
                         <strong>Harmful actions are repairable.</strong> In this section you will decide how to repair the harm caused by your actions.
                     </div>
 
                     <div class="question">
-                        <label>What can I do to make this right? <span class="required">*</span></label>
-                        <div class="checkbox-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="action-apology" name="action" value="Write a genuine apology">
-                                <label for="action-apology">Write a genuine apology to the person I impacted.</label>
+                        <label>When something goes wrong, different kinds of repair help in different ways. Think about who or what was affected most by your behavior, and choose the repair that fits. <span class="required">*</span></label>
+
+                        <!-- Relationship Repair -->
+                        <div class="repair-category relationship">
+                            <div class="repair-header" onclick="toggleRepair('relationship')">
+                                <div class="repair-header-top">
+                                    <div class="repair-name">Relationship Repair</div>
+                                    <span class="repair-toggle" id="toggle-relationship">▼</span>
+                                </div>
+                                <div class="repair-explanation">
+                                    Choose this if a person was hurt, disrespected, or negatively affected by your words or actions.
+                                    <div class="repair-goal">The Goal: To rebuild trust and show the other person that you value them.</div>
+                                    <div class="repair-examples">Examples: You said something mean or argued with a teacher.</div>
+                                </div>
                             </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="action-fix" name="action" value="Fix/Clean something">
-                                <label for="action-fix">Fix/Clean something I damaged or disorganized.</label>
+                            <div class="repair-body" id="body-relationship">
+                                <div class="repair-body-question">What actions can I take to repair the harm and rebuild trust right now?</div>
+                                <div class="repair-actions">
+                                    <div class="repair-action">
+                                        <input type="checkbox" id="rel-1" name="action" value="Write an apology">
+                                        <label for="rel-1" class="repair-action-text">
+                                            Write an apology that includes:
+                                            <div class="action-bullets">
+                                                <div class="action-bullet">What I did</div>
+                                                <div class="action-bullet">How it affected the other person</div>
+                                                <div class="action-bullet">What I will do differently next time</div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="repair-action">
+                                        <input type="checkbox" id="rel-2" name="action" value="Participate in a peace talk">
+                                        <label for="rel-2" class="repair-action-text">
+                                            Participate in a short "peace talk" (facilitated by an adult) with the peer or teacher.
+                                            <div class="action-bullets">
+                                                <div class="action-bullet">Listen to how my actions affected them without interrupting</div>
+                                                <div class="action-bullet">Share how I will respond differently next time</div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="repair-action">
+                                        <input type="checkbox" id="rel-3" name="action" value="Do something kind for the person I impacted">
+                                        <label for="rel-3" class="repair-action-text">Do something kind or helpful for the person I impacted — not to "cancel it out" but to show I care about them.</label>
+                                    </div>
+                                    <div class="repair-action">
+                                        <input type="checkbox" id="rel-4" name="action" value="Public acknowledgement to the class">
+                                        <label for="rel-4" class="repair-action-text">If I disrupted the whole class, make a brief public acknowledgement to the group to validate their right to a calm learning environment.</label>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="action-complete" name="action" value="Complete the learning task">
-                                <label for="action-complete">Complete the learning task I missed during class.</label>
+                        </div>
+
+                        <!-- Environment Repair -->
+                        <div class="repair-category environment">
+                            <div class="repair-header" onclick="toggleRepair('environment')">
+                                <div class="repair-header-top">
+                                    <div class="repair-name">Environment Repair</div>
+                                    <span class="repair-toggle" id="toggle-environment">▼</span>
+                                </div>
+                                <div class="repair-explanation">
+                                    Choose this if your actions disrupted the whole class, made it hard for others to learn, or physically messed up the classroom.
+                                    <div class="repair-goal">The Goal: To give back to the group and help the classroom run smoothly again.</div>
+                                    <div class="repair-examples">Examples: You were blurting out during a lesson, left a mess at your desk, or were wandering the room.</div>
+                                </div>
                             </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="action-plan" name="action" value="Create a plan with teacher">
-                                <label for="action-plan">Create a plan with my teacher to avoid this next time.</label>
+                            <div class="repair-body" id="body-environment">
+                                <div class="repair-body-question">What actions can I take to repair the harm and rebuild trust right now?</div>
+                                <div class="repair-actions">
+                                    <div class="repair-action">
+                                        <input type="checkbox" id="env-1" name="action" value="Help teacher with a task">
+                                        <label for="env-1" class="repair-action-text">Spend 5–10 minutes helping the teacher with a task that benefits everyone (e.g., organizing the library, prepping materials, or wiping down desks).</label>
+                                    </div>
+                                    <div class="repair-action">
+                                        <input type="checkbox" id="env-2" name="action" value="Create a cheat sheet of missed material">
+                                        <label for="env-2" class="repair-action-text">If I disrupted a lesson, create a "cheat sheet" or a 1-page summary of the missed material to help others who might have been distracted by me.</label>
+                                    </div>
+                                    <div class="repair-action">
+                                        <input type="checkbox" id="env-3" name="action" value="Create something showing I understand the agreement I broke">
+                                        <label for="env-3" class="repair-action-text">Create something (a poster, a reminder card, a short piece of writing) that shows I understand the classroom agreement I broke.</label>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="other-action" name="action" value="other">
-                                <label for="other-action">Other:</label>
+                        </div>
+
+                        <!-- Self Repair -->
+                        <div class="repair-category self-repair">
+                            <div class="repair-header" onclick="toggleRepair('self')">
+                                <div class="repair-header-top">
+                                    <div class="repair-name">Self Repair</div>
+                                    <span class="repair-toggle" id="toggle-self">▼</span>
+                                </div>
+                                <div class="repair-explanation">
+                                    Choose this if you feel like you "lost control" of your choices, or if your behavior mostly hurt your own progress and reputation.
+                                    <div class="repair-goal">The Goal: To figure out why it happened and build a "shield" so it doesn't happen again.</div>
+                                    <div class="repair-examples">Examples: You refused to do your work, put your head down, or keep finding yourself in the same trouble over and over.</div>
+                                </div>
                             </div>
-                            <input type="text" id="other-action-text" name="other-action-text" placeholder="Please specify" style="margin-left: 30px; margin-top: 5px;" disabled>
+                            <div class="repair-body" id="body-self">
+                                <div class="repair-body-question">What actions can I take to repair the harm and rebuild trust right now?</div>
+                                <div class="repair-actions">
+                                    <div class="repair-action">
+                                        <input type="checkbox" id="self-1" name="action" value="Observe a peer modeling target behavior">
+                                        <label for="self-1" class="repair-action-text">
+                                            Observe a peer who is modeling the target behavior.
+                                            <div class="action-bullets">
+                                                <div class="action-bullet">Write down two specific things they do that I can try</div>
+                                                <div class="action-bullet">In the section below, identify which adult I will turn these reflections into</div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="repair-action">
+                                        <input type="checkbox" id="self-2" name="action" value="Draw or write about my trigger">
+                                        <label for="self-2" class="repair-action-text">Draw or write about what was happening for me (not others) right before the behavior — what triggered it and what I could do differently next time.</label>
+                                    </div>
+                                    <div class="repair-action">
+                                        <input type="checkbox" id="self-3" name="action" value="Role-play the situation with a trusted adult">
+                                        <label for="self-3" class="repair-action-text">Role-play the situation differently with a counselor or trusted adult.</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="question">
-                        <label for="immediate-plan">What is my plan to immediately restore the harm I caused? (What action am I going to take now?) <span class="required">*</span></label>
+                        <label for="immediate-plan">What action am I going to take right now to repair the harm I caused? <span class="required">*</span></label>
+                        <div style="margin-bottom: 8px; padding: 8px 12px; background: #fff8e1; border-left: 3px solid #f9a825; border-radius: 4px; font-size: 0.9em; color: #555; font-weight: normal;">
+                            <strong>TEACHERS:</strong> Verify this has happened before the form is submitted.
+                        </div>
                         <textarea id="immediate-plan" name="immediate-plan" required></textarea>
                     </div>
                 </div>
 
                 <!-- ===== EXTENDED ONLY: Moving Forward ===== -->
                 <div class="section extended-only" id="section-moving-forward">
-                    <h2 class="section-title">Moving Forward</h2>
+                    <h2 class="section-title">Moving Forward (Long-Term Plan)</h2>
                     <div class="restorative-note">
-                        <strong>You don't have to do this alone.</strong> Let's identify what support you need to succeed next time.
+                        <strong>We are going to make a plan to change this pattern of behavior.</strong> In this section you will write a note to try and prevent this behavior next time.
                     </div>
 
                     <div class="question">
-                        <label for="need-from-teacher">What do I need from my teacher or the school to be successful next time? <span class="required">*</span></label>
+                        <label for="need-from-teacher">Write a message to yourself to read the next time you're in this situation. What do you want to remind yourself of? <span class="required">*</span></label>
                         <textarea id="need-from-teacher" name="need-from-teacher"></textarea>
                     </div>
                 </div>
@@ -609,6 +912,20 @@
                     <button type="submit">Submit Reflection ✓</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Submit passkey modal -->
+    <div class="passkey-overlay" id="submit-passkey-overlay">
+        <div class="passkey-modal">
+            <h3>🔒 Teacher Confirmation</h3>
+            <p>Enter the passkey to confirm you have reviewed this reflection and it's ready to submit.</p>
+            <input type="password" id="submit-passkey-input" placeholder="Enter passkey">
+            <div class="passkey-modal-error" id="submit-passkey-error">Incorrect passkey. Please try again.</div>
+            <div class="passkey-modal-buttons">
+                <button class="passkey-modal-cancel" onclick="cancelSubmitPasskey()">Cancel</button>
+                <button class="passkey-modal-submit" onclick="confirmSubmitPasskey()">Submit Reflection</button>
+            </div>
         </div>
     </div>
 
@@ -1209,14 +1526,42 @@
             document.getElementById('other-affected-text').disabled = !this.checked;
         });
 
-        document.getElementById('other-action').addEventListener('change', function() {
-            document.getElementById('other-action-text').disabled = !this.checked;
-        });
+        // ===== SUBMIT PASSKEY MODAL =====
+        let pendingSubmitEvent = null;
 
-        // ===== FORM SUBMISSION =====
         document.getElementById('reflectionForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            pendingSubmitEvent = e;
+            // Show submit passkey modal
+            document.getElementById('submit-passkey-input').value = '';
+            document.getElementById('submit-passkey-error').style.display = 'none';
+            document.getElementById('submit-passkey-overlay').classList.add('active');
+            setTimeout(() => document.getElementById('submit-passkey-input').focus(), 100);
+        });
 
+        document.getElementById('submit-passkey-input').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') { e.preventDefault(); confirmSubmitPasskey(); }
+        });
+
+        function cancelSubmitPasskey() {
+            document.getElementById('submit-passkey-overlay').classList.remove('active');
+            pendingSubmitEvent = null;
+        }
+
+        function confirmSubmitPasskey() {
+            const passkey = document.getElementById('submit-passkey-input').value;
+            if (passkey !== TEACHER_PASSKEY) {
+                document.getElementById('submit-passkey-error').style.display = 'block';
+                document.getElementById('submit-passkey-input').value = '';
+                document.getElementById('submit-passkey-input').focus();
+                return;
+            }
+            document.getElementById('submit-passkey-overlay').classList.remove('active');
+            doSubmit(pendingSubmitEvent);
+            pendingSubmitEvent = null;
+        }
+
+        function doSubmit(e) {
             const submitBtn = e.target.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Submitting...';
@@ -1234,7 +1579,6 @@
                 }
             }
 
-            // Add the hidden parent email value (not in FormData since it's type=hidden set via JS)
             data['parent-email'] = document.getElementById('parent-email').value;
             data['form-type'] = selectedFormType;
             data['reviewed'] = 'Yes';
@@ -1259,13 +1603,11 @@
 
                 setTimeout(() => {
                     e.target.reset();
-                    // Reset date
                     const t = new Date();
                     const m = String(t.getMonth() + 1).padStart(2, '0');
                     const d = String(t.getDate()).padStart(2, '0');
                     const yr = t.getFullYear();
                     document.getElementById('date').value = `${m}-${d}-${yr}`;
-                    // Reset name dropdown
                     const nameDropdown = document.getElementById('name');
                     nameDropdown.disabled = true;
                     nameDropdown.innerHTML = '<option value="">-- Select your grade first --</option>';
@@ -1291,7 +1633,15 @@
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             });
-        });
+        }
+
+        // ===== REPAIR CATEGORY TOGGLE =====
+        function toggleRepair(category) {
+            const body = document.getElementById('body-' + category);
+            const arrow = document.getElementById('toggle-' + category);
+            body.classList.toggle('open');
+            arrow.classList.toggle('open');
+        }
     </script>
 </body>
 </html>
